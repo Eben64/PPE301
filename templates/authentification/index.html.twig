@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block navigation %} {% endblock %}
+
+{% block title %}Login{% endblock %}
+
+{% block contenu %}
+<body class="animsition">
+    <div class="page-wrapper">
+        <div class="page-content--bge8">
+            <div class="container">
+                <div class="login-wrap">
+                    <div class="login-content">
+                        <div class="login-logo">
+                            <a href="#">
+                                <img src="{{ asset('assets/images/icon/l.png') }}" alt="CoolAdmin">
+                            </a>
+                        </div>
+
+                        <div class="login-form">
+                            <form role="form" action="{{ path('app_login') }}" method="POST">
+                                {% if error %}
+                                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                {% endif %}
+
+                                <div class="form-group">
+                                    <label for="username">Nom d'utilisateur</label>
+                                    <input type="text" id="username" name="_username" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Mot de passe</label>
+                                    <input type="password" id="password" name="_password" class="form-control" required>
+                                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                                </div>
+                                <div class="login-checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember">Remember Me
+                                    </label>
+                                    <label>
+                                        <a href="#">Forgotten Password?</a>
+                                    </label>
+                                </div>
+                                <br>
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="Submit">sign in</button>
+                            </form>
+
+                        </div>
+
+                        <div class="register-link">
+                            <p>
+                                Don't you have an account?
+                                <a href="{{ path('app_register') }}">Sign Up Here</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}
