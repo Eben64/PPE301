@@ -30,8 +30,9 @@
                                 <div class="form-group">
                                     <label for="password">Mot de passe</label>
                                     <input type="password" id="password" name="_password" class="form-control" required>
-                                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                                    
                                 </div>
+                                <input type="hidden" name="_target_path" value="{{url('app_home')}}">
                                 <div class="login-checkbox">
                                     <label>
                                         <input type="checkbox" name="remember">Remember Me

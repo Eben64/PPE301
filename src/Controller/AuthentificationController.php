@@ -42,6 +42,36 @@ class AuthentificationController extends AbstractController
             'error'=>$error,
             'lastusername'=> $lastUsername,
         ]);
+
+        $user = new Utilisateurs();
+        $error= $authenticationUtils->getLastAuthenticationError();
+        $lastUsername= $authenticationUtils->getLastUsername();
+        $form=$this->createForm(UtilisateursType::class, $user);
+
+        // if($form->isSubmitted() && $form->isValid()){
+        //     $selectedRole=$form->get('role')->getData();
+        //     if($selectedRole->getNomRole()=="Client"){
+        //         $client=new Client();
+        //         $passwordHashed = $passwordHasher->hashPassword($user, $user->getPassword());
+        //         $em ->persist($user);
+        //         $client -> setPassword($passwordHashed);
+        //         $selectedRole = $form->get('role')->getData();
+        //         $client->setRole($selectedRole);
+        //         $client -> setCreerPar(1);
+        //         $client -> setCreerLe(new \DateTime('@'.strtotime('now')));
+        //         $em ->flush();   
+        //     }
+        // }else{
+        //     $responsable =new Responsable();
+        //     $passwordHashed = $passwordHasher->hashPassword($user, $user->getPassword());
+        //     $em ->persist($user);
+        //     $responsable -> setPassword($passwordHashed);
+        //     $selectedRole = $form->get('role')->getData();
+        //     $responsable->setRole($selectedRole);
+        //     $responsable -> setCreerPar(1);
+        //     $responsable -> setCreerLe(new \DateTime('@'.strtotime('now')));
+        //     $em ->flush();
+        // }
     }
 
     
@@ -78,9 +108,10 @@ class AuthentificationController extends AbstractController
 
 
     #[Route(path: '/logout', name: 'app_logout')]
-    public function logout(): void
+    public function logout(): Response
     {
-        throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+        $this->getUser().session_destroy();
+		return $this->redirectToRoute('app_login');
     }
-}
 
+}

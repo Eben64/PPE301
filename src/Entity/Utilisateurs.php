@@ -4,10 +4,12 @@ namespace App\Entity;
 
 use App\Repository\UtilisateursRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\InheritanceType;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UtilisateursRepository::class)]
+#[InheritanceType('JOINED')]
 class Utilisateurs extends EntityMere implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -157,4 +159,12 @@ class Utilisateurs extends EntityMere implements UserInterface, PasswordAuthenti
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return $this->nom;
+    }
+
+    
+
 }

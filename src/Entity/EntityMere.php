@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\EntityMereRepository;
+
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: EntityMereRepository::class)]
+#[ORM\MappedSuperclass()]
 Abstract class EntityMere
 {
     #[ORM\Id]
