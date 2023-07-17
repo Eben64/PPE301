@@ -41,6 +41,9 @@
                                 </a>
                                 <ul class="header3-sub-list list-unstyled">
                                     <li>
+                                        <a href="index.html">Ajouter un Motel</a>
+                                    </li>
+                                    <li>
                                         <a href="index.html">Chambres</a>
                                     </li>
                                     <li>
@@ -97,9 +100,6 @@
                                     <li>
                                         <a href="{{path('app_register')}}">Register</a>
                                     </li>
-                                    <li>
-                                        <a href="forget-pass.html">Forget Password</a>
-                                    </li>
                                 </ul>
                             </li>
                             {# <li class="has-sub">
@@ -152,11 +152,11 @@
                                     <p>Contact Us</p>
                                 </div>
                                 <div class="notifi__item">
-                                    <div class="bg-c1 img-cir img-40">
+                                    <div class="bg-c1 img-cir img-30">
                                         <i class="fa fa-inbox"></i>
                                     </div>
                                     <div class="content">
-                                        <a href="">Cliquez ici pour nous contactez</a>
+                                        <a href="">Nous contactez</a>
                                     </div>
                                 </div>
                                 {# <div class="notifi__item">
@@ -225,20 +225,19 @@
                                     <img src="{{ asset('assets/images/icon/profil0.png')}}" alt="John Doe" />
                                 </div>
                                 <div class="content">
-                                    <a class="js-acc-btn" href="#">john doe</a>
+                                    <a class="js-acc-btn" href="#">{{ app.user.username }}</a>
                                 </div>
                                 <div class="account-dropdown js-dropdown">
                                     <div class="info clearfix">
                                         <div class="image">
                                             <a href="#">
-                                                <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                                <img src="{{ asset('assets/images/icon/profil0.png')}}" alt="John Doe" />
                                             </a>
                                         </div>
                                         <div class="content">
-                                            <h5 class="name">
-                                                <a href="#">john doe</a>
-                                            </h5>
-                                            <span class="email">johndoe@example.com</span>
+                                            <h6 class="name">
+                                                <a href="#">Welcome {{ app.user.username }} !!!</a>
+                                            </h6>
                                         </div>
                                     </div>
                                     <div class="account-dropdown__body">
