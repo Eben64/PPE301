@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Comptable{% endblock %}
+
+{% block contenu %}
+<div class="container"></br>
+
+
+<center><h1>Comptable  <i class="fas fa-user"></i></h1></center></br>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Contact</th>
+                
+                {# <th>Roles</th>
+                <th>Creer_le</th>
+                <th>Creer_par</th>
+                <th>Modifie_le</th>
+                <th>Modifie_par</th> #}
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for comptable in comptables %}
+            <tr>
+                <td>{{ comptable.id }}</td>
+                <td>{{ comptable.username }}</td>
+                <td>{{ comptable.roles ? comptable.roles|json_encode : '' }}</td>
+                <td>{{ comptable.password }}</td>
+                <td>{{ comptable.nom }}</td>
+                <td>{{ comptable.prenom }}</td>
+                <td>{{ comptable.contact }}</td>
+                <td>{{ comptable.creerLe ? comptable.creerLe|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ comptable.creerPar }}</td>
+                <td>{{ comptable.modifieLe ? comptable.modifieLe|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ comptable.modifiePar }}</td>
+                <td>
+                    <a href="{{ path('app_comptable_show', {'id': comptable.id}) }}">show</a>
+                    <a href="{{ path('app_comptable_edit', {'id': comptable.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+<a href="{{ path('app_comptable_new') }}" style="display: inline-block; background-color: #007bff; color: #fff; text-decoration: none; padding: 10px 20px; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Ajouter un Comptable</a>
+
+
+</div>
+{% endblock %}

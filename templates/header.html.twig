@@ -9,6 +9,7 @@
                     </div>
                     <div class="header__navbar">
                         <ul class="list-unstyled">
+                        {% if is_granted('ROLE_USER') %}
                             <li>
                                 <a href="{{ path('app_home')}}">
                                     <i class="fas fa-tachometer-alt"></i>
@@ -20,17 +21,20 @@
                                     <span class="bot-line"></span>
                                 </a>
                                 <ul class="header3-sub-list list-unstyled">
+                                    {# <li>
+                                        <a href="{{ path('app_administrateur_index')}}">Administrateur</a>
+                                    </li> #}
                                     <li>
-                                        <a href="index.html">Responsable</a>
+                                        <a href="{{ path('app_responsable_index')}}">Responsable</a>
                                     </li>
                                     <li>
-                                        <a href="index2.html">Gerant</a>
+                                        <a href="{{ path('app_gerant_index')}}">Gerant</a>
                                     </li>
                                     <li>
-                                        <a href="index3.html">Comptable</a>
+                                        <a href="{{ path('app_comptable_index')}}">Comptable</a>
                                     </li>
                                     <li>
-                                        <a href="index4.html">Client</a>
+                                        <a href="{{ path('app_client_index')}}">Client</a>
                                     </li>
                                 </ul>
                             </li>
@@ -51,6 +55,7 @@
                                     </li>
                                 </ul>
                             </li>
+
                             <li class="has-sub">
                                 <a href="#">
                                     <i class="fas fa-glass-martini-alt"></i>Bar
@@ -65,6 +70,7 @@
                                     </li>
                                 </ul>
                             </li>
+                            
                             <li class="has-sub">
                                 <a href="#">
                                     <i class="fas fa-shopping-basket"></i>Opérations
@@ -89,7 +95,7 @@
                                     <i class="fas fa-trophy"></i>
                                     <span class="bot-line"></span>Features</a>
                             </li> #}
-                            <li class="has-sub">
+                            {# <li class="has-sub">
                                 <a href="#">
                                     <i class="fas fa-copy"></i>
                                     <span class="bot-line"></span>Actions</a>
@@ -101,7 +107,7 @@
                                         <a href="{{path('app_register')}}">Register</a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> #}
                             {# <li class="has-sub">
                                 <a href="#">
                                     <i class="fas fa-desktop"></i>
@@ -142,21 +148,23 @@
                                     </li>
                                 </ul>
                             </li> #}
+                            {% endif %}
                         </ul>
+                        
                     </div>
                     <div class="header__tool">
                         <div class="header-button-item has-noti js-item-menu">
                             <i class="fa fa-envelope"></i>
                             <div class="notifi-dropdown notifi-dropdown--no-bor js-dropdown">
-                                <div class="notifi__title">
+                                {# <div class="notifi__title">
                                     <p>Contact Us</p>
-                                </div>
+                                </div> #}
                                 <div class="notifi__item">
                                     <div class="bg-c1 img-cir img-30">
                                         <i class="fa fa-inbox"></i>
                                     </div>
                                     <div class="content">
-                                        <a href="">Nous contactez</a>
+                                        <a href=""><i class="fa fa-inbox"></i> Nous contactez</a>
                                     </div>
                                 </div>
                                 {# <div class="notifi__item">
@@ -225,7 +233,9 @@
                                     <img src="{{ asset('assets/images/icon/profil0.png')}}" alt="John Doe" />
                                 </div>
                                 <div class="content">
+                                {% if app.user %}
                                     <a class="js-acc-btn" href="#">{{ app.user.username }}</a>
+                                {% endif %}
                                 </div>
                                 <div class="account-dropdown js-dropdown">
                                     <div class="info clearfix">
@@ -236,28 +246,39 @@
                                         </div>
                                         <div class="content">
                                             <h6 class="name">
+                                            {% if app.user %}
                                                 <a href="#">Welcome {{ app.user.username }} !!!</a>
+                                            {% endif %}
                                             </h6>
                                         </div>
                                     </div>
                                     <div class="account-dropdown__body">
                                         <div class="account-dropdown__item">
                                             <a href="#">
-                                                <i class="zmdi zmdi-account"></i>Account</a>
+                                                <i class="zmdi zmdi-account"></i>Account
+                                            </a>
                                         </div>
-                                        {# <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-settings"></i>Setting</a>
-                                        </div>
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                        </div> #}
+                                        
+                                        {% if not app.user %}
+                                            <div class="account-dropdown__footer">
+                                                <a href="{{ path('app_login')}}">
+                                                    <i class="zmdi zmdi-power"></i>Login
+                                                </a>                                        
+                                            </div>
+                                        {% endif %}
+                                        
+                                        {% if app.user %}
+                                            <div class="account-dropdown__footer">
+                                                <a href="{{ path('app_logout')}}">
+                                                    <i class="zmdi zmdi-power"></i>Logout
+                                                </a>                                        
+                                            </div>
+                                        {% endif %}
+                                        
+                                        {# Autres éléments du menu #}
                                     </div>
-                                    <div class="account-dropdown__footer">
-                                        <a href="{{ path('app_logout')}}">
-                                            <i class="zmdi zmdi-power"></i>Logout</a>
-                                    </div>
+
+                                   
                                 </div>
                             </div>
                         </div>

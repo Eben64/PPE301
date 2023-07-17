@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administrateur{% endblock %}
+
+{% block contenu %}
+
+<div class="container"></br>
+
+
+<center><h1>Administrateur  <i class="fas fa-user"></i></h1></center></br>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Contact</th>
+                
+                {# <th>Roles</th>
+                <th>Creer_le</th>
+                <th>Creer_par</th>
+                <th>Modifie_le</th>
+                <th>Modifie_par</th> #}
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for administrateur in administrateurs %}
+            <tr>
+                <td>{{ administrateur.id }}</td>
+                <td>{{ administrateur.username }}</td>
+                <td>{{ administrateur.roles ? administrateur.roles|json_encode : '' }}</td>
+                <td>{{ administrateur.password }}</td>
+                <td>{{ administrateur.nom }}</td>
+                <td>{{ administrateur.prenom }}</td>
+                <td>{{ administrateur.contact }}</td>
+                <td>{{ administrateur.creerLe ? administrateur.creerLe|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ administrateur.creerPar }}</td>
+                <td>{{ administrateur.modifieLe ? administrateur.modifieLe|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ administrateur.modifiePar }}</td>
+                <td>
+                    <a href="{{ path('app_administrateur_show', {'id': administrateur.id}) }}">show</a>
+                    <a href="{{ path('app_administrateur_edit', {'id': administrateur.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_administrateur_new') }}" style="display: inline-block; background-color: #007bff; color: #fff; text-decoration: none; padding: 10px 20px; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Ajouter Un Administrateur</a>
+
+
+</div>  
+{% endblock %}

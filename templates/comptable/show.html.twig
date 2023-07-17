@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Comptable{% endblock %}
+
+{% block contenu %}
+    <h1>Comptable</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ comptable.id }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ comptable.username }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ comptable.roles ? comptable.roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ comptable.password }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ comptable.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ comptable.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Contact</th>
+                <td>{{ comptable.contact }}</td>
+            </tr>
+            <tr>
+                <th>Creer_le</th>
+                <td>{{ comptable.creerLe ? comptable.creerLe|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Creer_par</th>
+                <td>{{ comptable.creerPar }}</td>
+            </tr>
+            <tr>
+                <th>Modifie_le</th>
+                <td>{{ comptable.modifieLe ? comptable.modifieLe|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Modifie_par</th>
+                <td>{{ comptable.modifiePar }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_comptable_index') }}">back to list</a>
+
+    <a href="{{ path('app_comptable_edit', {'id': comptable.id}) }}">edit</a>
+
+    {{ include('comptable/_delete_form.html.twig') }}
+{% endblock %}

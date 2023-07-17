@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Client {% endblock %}
+
+{% block contenu %}
+
+<div class="container"></br>
+
+
+<center><h1>Client  <i class="fas fa-user"></i></h1></center></br>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Contact</th>
+                
+                {# <th>Roles</th>
+                <th>Creer_le</th>
+                <th>Creer_par</th>
+                <th>Modifie_le</th>
+                <th>Modifie_par</th> #}
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for client in clients %}
+            <tr>
+                <td>{{ client.id }}</td>
+                <td>{{ client.username }}</td>
+                <td>{{ client.roles ? client.roles|json_encode : '' }}</td>
+                <td>{{ client.password }}</td>
+                <td>{{ client.nom }}</td>
+                <td>{{ client.prenom }}</td>
+                <td>{{ client.contact }}</td>
+                <td>{{ client.creerLe ? client.creerLe|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ client.creerPar }}</td>
+                <td>{{ client.modifieLe ? client.modifieLe|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ client.modifiePar }}</td>
+                <td>
+                    <a href="{{ path('app_client_show', {'id': client.id}) }}">show</a>
+                    <a href="{{ path('app_client_edit', {'id': client.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_client_new') }}" style="display: inline-block; background-color: #007bff; color: #fff; text-decoration: none; padding: 10px 20px; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Ajouter un Client</a>
+
+
+</div>
+{% endblock %}
