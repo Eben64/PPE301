@@ -3,11 +3,11 @@
 {% block title %}edit Responsable{% endblock %}
 
 {% block contenu %}
-    <h1>Edit Responsable</h1>
+<div class="container">
 
-    {{ include('responsable/_form.html.twig', {'button_label': 'Update'}) }}
+     </br><center><h1>Modifer Un Responsable <i class="fas fa-pencil-alt"></i></h1></center></br>
 
-    <a href="{{ path('app_responsable_index') }}">back to list</a>
+    {{ include('responsable/_form.html.twig', {'button_label': 'SAUVEGARDER'}) }}<br><br>
 
     {{ include('responsable/_delete_form.html.twig') }}
 {% endblock %}

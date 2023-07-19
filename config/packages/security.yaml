@@ -38,7 +38,7 @@ when@test:
     security:
 
         role_hierarchy:
-            ROLE_RESPONSABLE:       [ROLE_USER]   # ROLE_ADMIN hérite des autorisations de ROLE_USER
+            ROLE_RESPONSABLE: [ROLE_USER]   # ROLE_ADMIN hérite des autorisations de ROLE_USER
 
         access_control:
             - { path: ^/, roles: ROLE_RESPONSABLE }  # Accès au chemin / nécessite le rôle ROLE_ADMIN

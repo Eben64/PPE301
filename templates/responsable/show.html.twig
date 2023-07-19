@@ -3,25 +3,15 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block contenu %}
-    <h1>Responsable</h1>
+<div class="container"></br>
+
+    <center><h1>Informations Du Responsable  <i class="fas fa-user"></i></h1></center></br>
 
     <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ responsable.id }}</td>
-            </tr>
-            <tr>
-                <th>Username</th>
-                <td>{{ responsable.username }}</td>
-            </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{ responsable.roles ? responsable.roles|json_encode : '' }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ responsable.password }}</td>
             </tr>
             <tr>
                 <th>Nom</th>
@@ -32,8 +22,20 @@
                 <td>{{ responsable.prenom }}</td>
             </tr>
             <tr>
+                <th>Username</th>
+                <td>{{ responsable.username }}</td>
+            </tr>
+            <tr>
                 <th>Contact</th>
                 <td>{{ responsable.contact }}</td>
+            </tr>
+            {# <tr>
+                <th>Roles</th>
+                <td>{{ responsable.roles ? responsable.roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ responsable.password }}</td>
             </tr>
             <tr>
                 <th>Creer_le</th>
@@ -50,13 +52,18 @@
             <tr>
                 <th>Modifie_par</th>
                 <td>{{ responsable.modifiePar }}</td>
-            </tr>
+            </tr> #}
         </tbody>
     </table>
+</br></br>
+    <div>
+        <a href="{{ path('app_responsable_index') }}", class="btn btn-primary" style="background-color: #007bff; color: #fff; text-decoration: none;">RETOUR</a>
 
-    <a href="{{ path('app_responsable_index') }}">back to list</a>
+    {# <a href="{{ path('app_responsable_edit', {'id': responsable.id}) }}", class="btn btn-primary" style="background-color: #007bff; color: #fff; text-decoration: none;">MODIFER</a> #}
 
-    <a href="{{ path('app_responsable_edit', {'id': responsable.id}) }}">edit</a>
+    <button class="btn btn-danger" style="margin-left: 60em;">SUPPRIMER</button>
 
     {{ include('responsable/_delete_form.html.twig') }}
+    </div>
+</div>
 {% endblock %}
