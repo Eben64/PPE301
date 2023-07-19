@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ventes{% endblock %}
+
+{% block body %}
+    <h1>Ventes</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ vente.id }}</td>
+            </tr>
+            <tr>
+                <th>NomClient</th>
+                <td>{{ vente.nomClient }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_ventes_index') }}">back to list</a>
+
+    <a href="{{ path('app_ventes_edit', {'id': vente.id}) }}">edit</a>
+
+    {{ include('ventes/_delete_form.html.twig') }}
+{% endblock %}

@@ -29,6 +29,9 @@ class Chambres
     #[ORM\JoinColumn(nullable: false)]
     private ?Motel $motel = null;
 
+    #[ORM\ManyToOne(inversedBy: 'chambres')]
+    private ?CategorieChambres $categorie = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +93,18 @@ class Chambres
     public function setMotel(?Motel $motel): static
     {
         $this->motel = $motel;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?CategorieChambres
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?CategorieChambres $categorie): static
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }

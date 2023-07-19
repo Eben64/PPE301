@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block contenu %}
+
+<div class="container"></br>
+
+    <center><h1>Liste des Ventes  <i class="fas fa-user"></i></h1></center></br>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom du Client</th>
+                <th>Article Vendu</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vente in ventes %}
+            <tr>
+                <td>{{ vente.id }}</td>
+                <td>{{ vente.nomClient }}</td>
+                <td>{{ vente.article }}</td>
+                <td>
+                    <a href="{{ path('app_ventes_show', {'id': vente.id}) }}">show</a>
+                    <a href="{{ path('app_ventes_edit', {'id': vente.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+<a href="{{ path('app_ventes_new') }}" style="display: inline-block; background-color: #007bff; color: #fff; text-decoration: none; padding: 10px 20px; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Ajouter une Vente</a>
+
+
+</div>
+{% endblock %}

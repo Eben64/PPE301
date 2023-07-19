@@ -36,6 +36,13 @@ security:
 
 when@test:
     security:
+
+        role_hierarchy:
+            ROLE_RESPONSABLE:       [ROLE_USER]   # ROLE_ADMIN hérite des autorisations de ROLE_USER
+
+        access_control:
+            - { path: ^/, roles: ROLE_RESPONSABLE }  # Accès au chemin / nécessite le rôle ROLE_ADMIN
+
         password_hashers:
             # By default, password hashers are resource intensive and take time. This is
             # important to generate secure password hashes. In tests however, secure hashes

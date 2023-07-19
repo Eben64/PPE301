@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/responsable')]
@@ -23,13 +24,19 @@ class ResponsableController extends AbstractController
     }
 
     #[Route('/new', name: 'app_responsable_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): Response
     {
         $responsable = new Responsable();
         $form = $this->createForm(ResponsableType::class, $responsable);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid("ROLE_RESPONSABLE")) {
+            $passwordHashed = $passwordHasher->hashPassword($responsable, $responsable->getPassword());
+            $responsable -> setCreerLe(new \DateTime('@'.strtotime('now')));
+            $responsable -> setModifieLe(new \DateTime('@'.strtotime('now')));
+            $responsable -> setCreerPar(1);
+            $responsable -> setModifiePar(1);
+            $responsable -> setPassword($passwordHashed);
             $entityManager->persist($responsable);
             $entityManager->flush();
 

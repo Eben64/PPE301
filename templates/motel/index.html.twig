@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Motel index{% endblock %}
+
+{% block contenu %}
+<div class="container"></br>
+
+
+<center><h1>Liste des Motels  <i class="fas fa-hotel"></i></h1></center></br>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom Du Motel</th>
+                <th>Responsable</th>
+                <th>Emplacement</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for motel in motels %}
+            <tr>
+                <td>{{ motel.id }}</td>
+                <td>{{ motel.nom }}</td>
+                <td>{{ motel.responsable }}</td>
+                <td>{{ motel.emplacement }}</td>
+                <td>
+                    <a href="{{ path('app_motel_show', {'id': motel.id}) }}">show</a>
+                    <a href="{{ path('app_motel_edit', {'id': motel.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table></br>
+
+    <a href="{{ path('app_motel_new') }}" style="display: inline-block; background-color: #007bff; color: #fff; text-decoration: none; padding: 10px 20px; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Ajouter un Gérant</a>
+
+
+</div>
+{% endblock %}

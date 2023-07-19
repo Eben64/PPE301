@@ -17,7 +17,8 @@ Abstract class EntityMere
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     protected ?\DateTimeInterface $creer_le = null;
 
-    #[ORM\Column(length: 255)]
+
+    #[ORM\Column(length: 255, nullable: true)]
     protected ?string $creer_par = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]

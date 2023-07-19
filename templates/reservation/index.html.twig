@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservation index{% endblock %}
+
+{% block contenu %}
+<div class="container"></br>
+
+
+<center><h1>Liste des Réservations <i class="fas fa-calendar-check"></i></h1></center></br>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date de Réservation</th>
+                <th>Heure de Debut</th>
+                <th>Heure de Fin</th>
+                <th>Chambre Réservé</th>
+                <th>Client</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.dateReservation ? reservation.dateReservation|date('Y-m-d') : '' }}</td>
+                <td>{{ reservation.heureDebut ? reservation.heureDebut|date('H:i:s') : '' }}</td>
+                <td>{{ reservation.heureFin ? reservation.heureFin|date('H:i:s') : '' }}</td>
+                <td>{{ reservation.chambres }}</td>
+                <td>{{ reservation.client }}</td>
+                <td>
+                    <a href="{{ path('app_reservation_show', {'id': reservation.id}) }}">show</a>
+                    <a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table></br>
+
+    <a href="{{ path('app_reservation_new') }}" style="display: inline-block; background-color: #007bff; color: #fff; text-decoration: none; padding: 10px 20px; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Ajouter un Gérant</a>
+
+
+</div>
+{% endblock %}

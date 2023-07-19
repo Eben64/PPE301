@@ -15,7 +15,6 @@
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th>Username</th>
-                <th>Password</th>
                 <th>Contact</th>
                 
                 {# <th>Roles</th>
@@ -30,16 +29,16 @@
         {% for responsable in responsables %}
             <tr>
                 <td>{{ responsable.id }}</td>
-                <td>{{ responsable.username }}</td>
-                <td>{{ responsable.roles ? responsable.roles|json_encode : '' }}</td>
-                <td>{{ responsable.password }}</td>
                 <td>{{ responsable.nom }}</td>
                 <td>{{ responsable.prenom }}</td>
+                <td>{{ responsable.username }}</td>
                 <td>{{ responsable.contact }}</td>
+                {#<td>{{ responsable.roles ? responsable.roles|json_encode : '' }}</td>
+                <td>{{ responsable.password }}</td>
                 <td>{{ responsable.creerLe ? responsable.creerLe|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ responsable.creerPar }}</td>
                 <td>{{ responsable.modifieLe ? responsable.modifieLe|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ responsable.modifiePar }}</td>
+                <td>{{ responsable.modifiePar }}</td> #}
                 <td>
                     <a href="{{ path('app_responsable_show', {'id': responsable.id}) }}">show</a>
                     <a href="{{ path('app_responsable_edit', {'id': responsable.id}) }}">edit</a>

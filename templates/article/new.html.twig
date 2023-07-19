@@ -1,0 +1,14 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Article {% endblock %}
+
+{% block contenu %}
+    <div class="container">
+
+        </br><center><h1>Ajouter Un Article <i class="fas fa-plus"></i></h1></center></br>
+
+    {{ include('article/_form.html.twig') }}
+
+    </div>
+{% endblock %}

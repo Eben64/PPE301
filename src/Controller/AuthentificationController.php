@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 
@@ -20,11 +21,15 @@ class AuthentificationController extends AbstractController
 {
 
     #[Route('/login', name: 'app_login')]
-    public function login(Request $request, AuthenticationUtils $authenticationUtils): Response
+    public function login(Request $request, AuthenticationUtils $authenticationUtils, AuthorizationCheckerInterface $authChecker): Response
     {
         
         $error= $authenticationUtils->getLastAuthenticationError();
         $lastUsername= $authenticationUtils->getLastUsername();
+
+        if (!$authChecker->isGranted('ROLE_RESPONSABLE')) {
+            throw $this->createAccessDeniedException('Accès refusé. Vous devez être Responsable.');
+        }
 
         if($this->isGranted("ROLE_RESPONSABLE")){
             return $this->redirectToRoute('app_home');

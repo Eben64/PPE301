@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chambres index{% endblock %}
+
+{% block contenu %}
+<div class="container"></br>
+
+
+<center><h1>Liste des Articles  <i class="fas fa-hotel"></i></h1></center></br>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Designation</th>
+                <th>Description</th>
+                <th>PrixUnitaire</th>
+                <th>Quantite</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.id }}</td>
+                <td>{{ article.designation }}</td>
+                <td>{{ article.description }}</td>
+                <td>{{ article.prixUnitaire }}</td>
+                <td>{{ article.quantite }}</td>
+                <td>
+                    <a href="{{ path('app_article_show', {'id': article.id}) }}">show</a>
+                    <a href="{{ path('app_article_edit', {'id': article.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+<a href="{{ path('app_article_new') }}" style="display: inline-block; background-color: #007bff; color: #fff; text-decoration: none; padding: 10px 20px; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Ajouter un Article</a>
+
+
+</div>
+{% endblock %}

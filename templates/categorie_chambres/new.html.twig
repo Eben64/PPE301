@@ -1,0 +1,17 @@
+
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Client {% endblock %}
+
+{% block contenu %}
+    <div class="container">
+
+        </br><center><h1>Ajouter Une Catégorie de Chambres <i class="fas fa-plus"></i></h1></center></br>
+
+    {{ include('categorie_chambres/_form.html.twig') }}
+
+    <a href="{{ path('app_categorie_chambres_index') }}">back to list</a>
+
+    </div>
+{% endblock %}

@@ -45,13 +45,13 @@
                                 </a>
                                 <ul class="header3-sub-list list-unstyled">
                                     <li>
-                                        <a href="index.html">Ajouter un Motel</a>
+                                        <a href="{{ path('app_motel_index')}}">Ajouter un Motel</a>
                                     </li>
                                     <li>
-                                        <a href="index.html">Chambres</a>
+                                        <a href="{{ path('app_chambres_index')}}">Chambres</a>
                                     </li>
                                     <li>
-                                        <a href="index2.html">Reservation</a>
+                                        <a href="{{ path('app_reservation_index')}}">Reservation</a>
                                     </li>
                                 </ul>
                             </li>
@@ -63,7 +63,7 @@
                                 </a>
                                 <ul class="header3-sub-list list-unstyled">
                                     <li>
-                                        <a href="index.html">Gestion des Articles</a>
+                                        <a href="{{ path('app_article_index')}}">Gestion des Articles</a>
                                     </li>
                                     <li>
                                         <a href="index2.html">Approvisionnements</a>
@@ -78,7 +78,7 @@
                                 </a>
                                 <ul class="header3-sub-list list-unstyled">
                                     <li>
-                                        <a href="index.html">Ventes</a>
+                                        <a href="{{ path('app_ventes_index')}}">Ventes</a>
                                     </li>
                                     <li>
                                         <a href="index2.html">Achats</a>
@@ -230,7 +230,7 @@
                         <div class="account-wrap">
                             <div class="account-item account-item--style2 clearfix js-item-menu">
                                 <div class="image">
-                                    <img src="{{ asset('assets/images/icon/profil0.png')}}" alt="John Doe" />
+                                    <img src="{{ asset('assets/images/icon/p0.png')}}" alt="John Doe" />
                                 </div>
                                 <div class="content">
                                 {% if app.user %}
@@ -241,7 +241,7 @@
                                     <div class="info clearfix">
                                         <div class="image">
                                             <a href="#">
-                                                <img src="{{ asset('assets/images/icon/profil0.png')}}" alt="John Doe" />
+                                                <img src="{{ asset('assets/images/icon/p0.png')}}" alt="John Doe" />
                                             </a>
                                         </div>
                                         <div class="content">
