@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/comptable')]
@@ -23,13 +24,21 @@ class ComptableController extends AbstractController
     }
 
     #[Route('/new', name: 'app_comptable_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): Response
     {
         $comptable = new Comptable();
         $form = $this->createForm(ComptableType::class, $comptable);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($comptable);
+                $passwordHashed = $passwordHasher->hashPassword($comptable, $comptable->getPassword());
+                $comptable -> setCreerLe(new \DateTime('@'.strtotime('now')));
+                $comptable -> setModifieLe(new \DateTime('@'.strtotime('now')));
+                $comptable -> setCreerPar(1);
+                $comptable -> setModifiePar(1);
+                $entityManager->persist($comptable);
+                $entityManager->flush();
             $entityManager->persist($comptable);
             $entityManager->flush();
 

@@ -31,7 +31,7 @@ class ResponsableType extends AbstractType
                 'query_builder' => function (RoleRepository $roleRepository) {
                     return $roleRepository->createQueryBuilder('r')
                         ->where('r.nom_role IN (:roles)')
-                        ->setParameter('roles', ['Responsable', 'Client']);
+                        ->setParameter('roles', ['Responsable', 'Client', 'Gerant', 'Comptable']);
                 },
             ]);
             // ->add('roles')

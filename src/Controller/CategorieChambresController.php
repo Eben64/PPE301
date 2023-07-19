@@ -33,7 +33,7 @@ class CategorieChambresController extends AbstractController
             $entityManager->persist($categorieChambre);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_categorie_chambres_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_chambres_new', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('categorie_chambres/new.html.twig', [

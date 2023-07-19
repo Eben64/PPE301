@@ -47,7 +47,7 @@ class RoleRepository extends ServiceEntityRepository
             FROM App\Entity\Role r
             WHERE r.nom_role IN (:roles)
         ');
-        $query->setParameter('roles', ['Responsable', 'Client']);
+        $query->setParameter('roles', ['Responsable', 'Client', 'Gerant', 'Comptable']);
         return $query->getResult();
     }
 

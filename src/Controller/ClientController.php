@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/client')]
@@ -23,13 +24,21 @@ class ClientController extends AbstractController
     }
 
     #[Route('/new', name: 'app_client_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager,  UserPasswordHasherInterface $passwordHasher): Response
     {
         $client = new Client();
         $form = $this->createForm(ClientType::class, $client);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($client);
+                $passwordHashed = $passwordHasher->hashPassword($client, $client->getPassword());
+                $client -> setCreerLe(new \DateTime('@'.strtotime('now')));
+                $client -> setModifieLe(new \DateTime('@'.strtotime('now')));
+                $client -> setCreerPar(1);
+                $client -> setModifiePar(1);
+                $entityManager->persist($client);
+                $entityManager->flush();
             $entityManager->persist($client);
             $entityManager->flush();
 

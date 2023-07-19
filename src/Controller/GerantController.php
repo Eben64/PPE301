@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/gerant')]
@@ -23,7 +24,7 @@ class GerantController extends AbstractController
     }
 
     #[Route('/new', name: 'app_gerant_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager,  UserPasswordHasherInterface $passwordHasher): Response
     {
         $gerant = new Gerant();
         $form = $this->createForm(GerantType::class, $gerant);
@@ -31,6 +32,12 @@ class GerantController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($gerant);
+            $passwordHashed = $passwordHasher->hashPassword($gerant, $gerant->getPassword());
+            $gerant -> setCreerLe(new \DateTime('@'.strtotime('now')));
+            $gerant -> setModifieLe(new \DateTime('@'.strtotime('now')));
+            $gerant -> setCreerPar(1);
+            $gerant -> setModifiePar(1);
+            $gerant -> setPassword($passwordHashed);
             $entityManager->flush();
 
             return $this->redirectToRoute('app_gerant_index', [], Response::HTTP_SEE_OTHER);

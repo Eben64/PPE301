@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Gerant{% endblock %}
+{% block title %}edit Gerant{% endblock %}
 
 {% block contenu %}
-    <h1>Edit Gerant</h1>
+<div class="container">
 
-    {{ include('gerant/_form.html.twig', {'button_label': 'Update'}) }}
+     </br><center><h1>Modifer Un Gérant <i class="fas fa-pencil-alt"></i></h1></center></br>
 
-    <a href="{{ path('app_gerant_index') }}">back to list</a>
+    {{ include('gerant/_form.html.twig', {'button_label': 'SAUVEGARDER'}) }}<br><br>
 
     {{ include('gerant/_delete_form.html.twig') }}
 {% endblock %}

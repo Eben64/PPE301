@@ -2,12 +2,14 @@
 
 {% block title %}Edit Chambres{% endblock %}
 
-{% block body %}
-    <h1>Edit Chambres</h1>
+{% block contenu %}
+<div class="container">
 
-    {{ include('chambres/_form.html.twig', {'button_label': 'Update'}) }}
+     </br><center><h1>Modifer Une Chambre <i class="fas fa-pencil-alt"></i></h1></center></br>
 
-    <a href="{{ path('app_chambres_index') }}">back to list</a>
+    {{ include('chambres/_form.html.twig', {'button_label': 'MODIFIER'}) }}
 
-    {{ include('chambres/_delete_form.html.twig') }}
+    {# <a href="{{ path('app_chambres_index') }}">back to list</a>
+
+    {{ include('chambres/_delete_form.html.twig') }} #}
 {% endblock %}

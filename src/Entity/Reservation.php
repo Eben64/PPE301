@@ -11,9 +11,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Reservation
 {
 
-    #[Assert\NotBlank(message: 'Veuillez sélectionner une chambre.')]
-    protected $chambre_id;
-
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

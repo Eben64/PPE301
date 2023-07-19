@@ -2,8 +2,11 @@
 
 {% block title %}Motel{% endblock %}
 
-{% block body %}
-    <h1>Motel</h1>
+{% block contenu %}
+<div class="container"></br>
+
+    <center><h1>Informations Du Motel  <i class="fas fa-hotel"></i></h1></center></br><br>
+
 
     <table class="table">
         <tbody>
@@ -21,10 +24,17 @@
             </tr>
         </tbody>
     </table>
+</br></br>
+    <div>
+        <a href="{{ path('app_motel_index') }}", class="btn btn-primary" style="background-color: #007bff; color: #fff; text-decoration: none;">RETOUR</a>
 
-    <a href="{{ path('app_motel_index') }}">back to list</a>
+    {# <a href="{{ path('app_responsable_edit', {'id': responsable.id}) }}", class="btn btn-primary" style="background-color: #007bff; color: #fff; text-decoration: none;">MODIFER</a> #}
 
-    <a href="{{ path('app_motel_edit', {'id': motel.id}) }}">edit</a>
+    <button class="btn btn-danger" style="margin-left: 60em;">SUPPRIMER</button>
 
     {{ include('motel/_delete_form.html.twig') }}
+    </div>
+
+</div>
+</div>
 {% endblock %}

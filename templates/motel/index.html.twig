@@ -10,12 +10,12 @@
 
     <table class="table">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom Du Motel</th>
-                <th>Responsable</th>
-                <th>Emplacement</th>
-                <th>Actions</th>
+            <tr style="background-color: #007bff; color: #fff;">
+                <th style="padding: 10px;">Id</th>
+                <th style="padding: 10px;">Nom Du Motel</th>
+                <th style="padding: 10px;">Responsable</th>
+                <th style="padding: 10px;">Emplacement</th>
+                <th style="padding: 10px;">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -26,8 +26,8 @@
                 <td>{{ motel.responsable }}</td>
                 <td>{{ motel.emplacement }}</td>
                 <td>
-                    <a href="{{ path('app_motel_show', {'id': motel.id}) }}">show</a>
-                    <a href="{{ path('app_motel_edit', {'id': motel.id}) }}">edit</a>
+                    <a href="{{ path('app_motel_show', {'id': motel.id}) }}" class="btn btn-primary" style="background-color: #808080; color: #fff; text-decoration: none;">APERÇU</a>
+                    <a href="{{ path('app_motel_edit', {'id': motel.id}) }}" class="btn btn-primary" style="background-color: #808080; color: #fff; text-decoration: none;">MODIFIER</a>
                 </td>
             </tr>
         {% else %}
@@ -38,7 +38,7 @@
         </tbody>
     </table></br>
 
-    <a href="{{ path('app_motel_new') }}" style="display: inline-block; background-color: #007bff; color: #fff; text-decoration: none; padding: 10px 20px; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Ajouter un Gérant</a>
+    <a href="{{ path('app_motel_new') }}" style="display: inline-block; background-color: #007bff; color: #fff; text-decoration: none; padding: 10px 20px; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Ajouter un Motel</a>
 
 
 </div>

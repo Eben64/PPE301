@@ -3,25 +3,15 @@
 {% block title %}Comptable{% endblock %}
 
 {% block contenu %}
-    <h1>Comptable</h1>
+<div class="container"></br>
+
+    <center><h1>Informations Du Comptable  <i class="fas fa-user"></i></h1></center></br>
 
     <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ comptable.id }}</td>
-            </tr>
-            <tr>
-                <th>Username</th>
-                <td>{{ comptable.username }}</td>
-            </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{ comptable.roles ? comptable.roles|json_encode : '' }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ comptable.password }}</td>
             </tr>
             <tr>
                 <th>Nom</th>
@@ -32,31 +22,49 @@
                 <td>{{ comptable.prenom }}</td>
             </tr>
             <tr>
+                <th>Username</th>
+                <td>{{ comptable.username }}</td>
+            </tr>
+            <tr>
                 <th>Contact</th>
                 <td>{{ comptable.contact }}</td>
             </tr>
+            {# <tr>
+                <th>Roles</th>
+                <td>{{ gerant.roles ? gerant.roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ gerant.password }}</td>
+            </tr>
             <tr>
                 <th>Creer_le</th>
-                <td>{{ comptable.creerLe ? comptable.creerLe|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ gerant.creerLe ? gerant.creerLe|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>Creer_par</th>
-                <td>{{ comptable.creerPar }}</td>
+                <td>{{ gerant.creerPar }}</td>
             </tr>
             <tr>
                 <th>Modifie_le</th>
-                <td>{{ comptable.modifieLe ? comptable.modifieLe|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ gerant.modifieLe ? gerant.modifieLe|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>Modifie_par</th>
-                <td>{{ comptable.modifiePar }}</td>
-            </tr>
+                <td>{{ gerant.modifiePar }}</td>
+            </tr> #}
         </tbody>
     </table>
+</br></br>
+    <div>
+        <a href="{{ path('app_comptable_index') }}", class="btn btn-primary" style="background-color: #007bff; color: #fff; text-decoration: none;">RETOUR</a>
 
-    <a href="{{ path('app_comptable_index') }}">back to list</a>
+    {# <a href="{{ path('app_responsable_edit', {'id': responsable.id}) }}", class="btn btn-primary" style="background-color: #007bff; color: #fff; text-decoration: none;">MODIFER</a> #}
 
-    <a href="{{ path('app_comptable_edit', {'id': comptable.id}) }}">edit</a>
+    <button class="btn btn-danger" style="margin-left: 60em;">SUPPRIMER</button>
 
     {{ include('comptable/_delete_form.html.twig') }}
+    </div>
+
+</div>
 {% endblock %}

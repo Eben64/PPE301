@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Client {% endblock %}
+{% block title %}edit Client{% endblock %}
 
 {% block contenu %}
-    <h1>Edit Client</h1>
+<div class="container">
 
-    {{ include('client/_form.html.twig', {'button_label': 'Update'}) }}
+     </br><center><h1>Modifer Un Client <i class="fas fa-pencil-alt"></i></h1></center></br>
 
-    <a href="{{ path('app_client_index') }}">back to list</a>
+    {{ include('client/_form.html.twig', {'button_label': 'SAUVEGARDER'}) }}<br><br>
 
     {{ include('client/_delete_form.html.twig') }}
 {% endblock %}

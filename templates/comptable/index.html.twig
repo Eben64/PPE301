@@ -10,39 +10,32 @@
 
     <table class="table">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Contact</th>
-                
-                {# <th>Roles</th>
-                <th>Creer_le</th>
-                <th>Creer_par</th>
-                <th>Modifie_le</th>
-                <th>Modifie_par</th> #}
-                <th>actions</th>
+            <tr style="background-color: #007bff; color: #fff;">
+                <th style="padding: 10px;">Id</th>
+                <th style="padding: 10px;">Nom</th>
+                <th style="padding: 10px;">Prenom</th>
+                <th style="padding: 10px;">Username</th>
+                <th style="padding: 10px;">Contact</th>
+                <th style="padding: 10px;">Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for comptable in comptables %}
             <tr>
                 <td>{{ comptable.id }}</td>
-                <td>{{ comptable.username }}</td>
-                <td>{{ comptable.roles ? comptable.roles|json_encode : '' }}</td>
-                <td>{{ comptable.password }}</td>
                 <td>{{ comptable.nom }}</td>
                 <td>{{ comptable.prenom }}</td>
+                <td>{{ comptable.username }}</td>
                 <td>{{ comptable.contact }}</td>
-                <td>{{ comptable.creerLe ? comptable.creerLe|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ comptable.creerPar }}</td>
-                <td>{{ comptable.modifieLe ? comptable.modifieLe|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ comptable.modifiePar }}</td>
+                {# <td>{{ gerant.password }}</td>
+                <td>{{ gerant.roles ? gerant.roles|json_encode : '' }}</td>
+                <td>{{ gerant.creerLe ? gerant.creerLe|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ gerant.creerPar }}</td>
+                <td>{{ gerant.modifieLe ? gerant.modifieLe|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ gerant.modifiePar }}</td> #}
                 <td>
-                    <a href="{{ path('app_comptable_show', {'id': comptable.id}) }}">show</a>
-                    <a href="{{ path('app_comptable_edit', {'id': comptable.id}) }}">edit</a>
+                    <a href="{{ path('app_comptable_show', {'id': comptable.id}) }}" class="btn btn-primary" style="background-color: #808080; color: #fff; text-decoration: none;">APERÇU</a>
+                    <a href="{{ path('app_comptable_edit', {'id': comptable.id}) }}" class="btn btn-primary" style="background-color: #808080; color: #fff; text-decoration: none;">MODIFIER</a>
                 </td>
             </tr>
         {% else %}
@@ -51,9 +44,9 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
+    </table><br>
 
-<a href="{{ path('app_comptable_new') }}" style="display: inline-block; background-color: #007bff; color: #fff; text-decoration: none; padding: 10px 20px; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Ajouter un Comptable</a>
+    <a href="{{ path('app_comptable_new') }}" style="display: inline-block; background-color: #007bff; color: #fff; text-decoration: none; padding: 10px 20px; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Ajouter un Comptable</a>
 
 
 </div>

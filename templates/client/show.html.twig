@@ -1,27 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Client {% endblock %}
+{% block title %}Client{% endblock %}
 
 {% block contenu %}
-    <h1>Client</h1>
+<div class="container"></br>
+
+    <center><h1>Informations Du Client  <i class="fas fa-user"></i></h1></center></br>
 
     <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ client.id }}</td>
-            </tr>
-            <tr>
-                <th>Username</th>
-                <td>{{ client.username }}</td>
-            </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{ client.roles ? client.roles|json_encode : '' }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ client.password }}</td>
             </tr>
             <tr>
                 <th>Nom</th>
@@ -32,31 +22,49 @@
                 <td>{{ client.prenom }}</td>
             </tr>
             <tr>
+                <th>Username</th>
+                <td>{{ client.username }}</td>
+            </tr>
+            <tr>
                 <th>Contact</th>
                 <td>{{ client.contact }}</td>
             </tr>
+            {# <tr>
+                <th>Roles</th>
+                <td>{{ gerant.roles ? gerant.roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ gerant.password }}</td>
+            </tr>
             <tr>
                 <th>Creer_le</th>
-                <td>{{ client.creerLe ? client.creerLe|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ gerant.creerLe ? gerant.creerLe|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>Creer_par</th>
-                <td>{{ client.creerPar }}</td>
+                <td>{{ gerant.creerPar }}</td>
             </tr>
             <tr>
                 <th>Modifie_le</th>
-                <td>{{ client.modifieLe ? client.modifieLe|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ gerant.modifieLe ? gerant.modifieLe|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>Modifie_par</th>
-                <td>{{ client.modifiePar }}</td>
-            </tr>
+                <td>{{ gerant.modifiePar }}</td>
+            </tr> #}
         </tbody>
     </table>
+</br></br>
+    <div>
+        <a href="{{ path('app_client_index') }}", class="btn btn-primary" style="background-color: #007bff; color: #fff; text-decoration: none;">RETOUR</a>
 
-    <a href="{{ path('app_client_index') }}">back to list</a>
+    {# <a href="{{ path('app_responsable_edit', {'id': responsable.id}) }}", class="btn btn-primary" style="background-color: #007bff; color: #fff; text-decoration: none;">MODIFER</a> #}
 
-    <a href="{{ path('app_client_edit', {'id': client.id}) }}">edit</a>
+    <button class="btn btn-danger" style="margin-left: 60em;">SUPPRIMER</button>
 
     {{ include('client/_delete_form.html.twig') }}
+    </div>
+
+</div>
 {% endblock %}

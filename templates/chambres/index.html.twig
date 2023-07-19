@@ -10,14 +10,15 @@
 
     <table class="table">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Numero de Chambre</th>
-                <th>Libelle</th>
-                <th>Prix Horaire</th>
-                <th>Description</th>
-                <th>Categorie</th>
-                <th>actions</th>
+            <tr style="background-color: #007bff; color: #fff;">
+                <th style="padding: 10px;">Id</th>
+                <th style="padding: 10px;">Numero de Chambre</th>
+                <th style="padding: 10px;">Libelle</th>
+                <th style="padding: 10px;">Prix Horaire</th>
+                <th style="padding: 10px;">Description</th>
+                <th style="padding: 10px;">Categorie</th>
+                <th style="padding: 10px;">Motel</th>
+                <th style="padding: 10px;">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -29,9 +30,10 @@
                 <td>{{ chambre.prixHoraire }}</td>
                 <td>{{ chambre.description }}</td>
                 <td>{{ chambre.categorie }}</td>
+                <td>{{ chambre.motel }}</td>
                 <td>
-                    <a href="{{ path('app_chambres_show', {'id': chambre.id}) }}">show</a>
-                    <a href="{{ path('app_chambres_edit', {'id': chambre.id}) }}">edit</a>
+                    <a href="{{ path('app_chambres_show', {'id': chambre.id}) }}" class="btn btn-primary" style="background-color: #808080; color: #fff; text-decoration: none;">APERÇU</a>
+                    <a href="{{ path('app_chambres_edit', {'id': chambre.id}) }}" class="btn btn-primary" style="background-color: #808080; color: #fff; text-decoration: none;">MODIFIER</a>
                 </td>
             </tr>
         {% else %}
@@ -42,7 +44,7 @@
         </tbody>
     </table></br>
 
-<a href="{{ path('app_chambres_new') }}" style="display: inline-block; background-color: #007bff; color: #fff; text-decoration: none; padding: 10px 20px; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Ajouter un Client</a>
+<a href="{{ path('app_chambres_new') }}" style="display: inline-block; background-color: #007bff; color: #fff; text-decoration: none; padding: 10px 20px; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Ajouter une Chambre</a>
 
 
 </div>
