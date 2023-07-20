@@ -10,13 +10,13 @@
 
     <table class="table">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Designation</th>
-                <th>Description</th>
-                <th>PrixUnitaire</th>
-                <th>Quantite</th>
-                <th>actions</th>
+            <tr style="background-color: #007bff; color: #fff;">
+                <th style="padding: 10px;">Id</th>
+                <th style="padding: 10px;">Designation</th>
+                <th style="padding: 10px;">Description</th>
+                <th style="padding: 10px;">PrixUnitaire</th>
+                <th style="padding: 10px;">Quantite</th>
+                <th style="padding: 10px;">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -39,6 +39,7 @@
         {% endfor %}
         </tbody>
     </table>
+</br>
 
 <a href="{{ path('app_article_new') }}" style="display: inline-block; background-color: #007bff; color: #fff; text-decoration: none; padding: 10px 20px; font-size: 16px; border-radius: 4px; transition: background-color 0.3s;">Ajouter un Article</a>
 

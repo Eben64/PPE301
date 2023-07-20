@@ -20,7 +20,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class AuthentificationController extends AbstractController
 {
 
-    #[Route('/login', name: 'app_login')]
+    #[Route('/auth/', name: 'app_auth')]
     public function login(Request $request, AuthenticationUtils $authenticationUtils, AuthorizationCheckerInterface $authChecker): Response
     {
         

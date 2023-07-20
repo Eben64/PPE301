@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Reservation{% endblock %}
+{% block title %}edit Gerant{% endblock %}
 
 {% block contenu %}
-    <h1>Edit Reservation</h1>
+<div class="container">
 
-    {{ include('reservation/_form.html.twig', {'button_label': 'Update'}) }}
+     </br><center><h1>Modifer Une Reservation <i class="fas fa-hotel"></i></h1></center></br>
+
+    {{ include('reservation/_form.html.twig', {'button_label': 'SAUVEGARDER'}) }}<br><br>
 
     {{ include('reservation/_delete_form.html.twig') }}
 {% endblock %}

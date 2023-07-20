@@ -26,7 +26,7 @@ class Article
     private ?int $quantite = null;
 
     #[ORM\ManyToOne(inversedBy: 'article')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Ventes $ventes = null;
 
     public function getId(): ?int
